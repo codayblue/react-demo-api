@@ -14,3 +14,6 @@ $api->get('/', function() use ($app) {
 
     return $app->json($results);   
 }); 
+
+
+return $api;
