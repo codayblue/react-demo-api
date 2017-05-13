@@ -14,6 +14,8 @@ $app->get('/', function () use ($app) {
 ->bind('homepage')
 ;
 
+$app->mount('/api/v1', include 'api.php');
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;

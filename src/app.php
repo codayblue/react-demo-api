@@ -11,6 +11,12 @@ $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
+$app->register(new DoctrineServiceProvider(), array(
+    'db.options' => array(
+        'driver' => 'pdo_sqlite',
+        'path' => __DIR__ . '/../database/app.db'
+    )
+));
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
 
