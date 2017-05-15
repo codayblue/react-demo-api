@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 // Get a controllers collection from the factory
 $api = $app['controllers_factory'];
@@ -58,4 +59,7 @@ $api->put('/tasks/{id}', function($id) use ($app) {
     return $app->json($tasks);
 });
 
+$api->after(function(Request $req, Response $resp) {
+    $resp->headers->set('Access-Control-Allow-Origin', '*');
+});
 return $api;
