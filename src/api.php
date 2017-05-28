@@ -13,7 +13,7 @@ $api->get('/tasks', function() use ($app) {
     $db = $app['db'];
 
     // Get all the tasks. if there are any.
-    $tasks = $db->fetchAll('SELECT rowid, Name FROM tasks WHERE Completed = 0');
+    $tasks = $db->fetchAll('SELECT rowid, Name, Description, Completed FROM tasks WHERE Completed = 0 ORDER BY rowid DESC');
 
     return $app->json($tasks);
 });
